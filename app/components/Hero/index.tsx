@@ -1,6 +1,5 @@
 import React from 'react'
 import MaxWidthWrapper from '../common/maxWidthWrapper'
-import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import Image from 'next/image'

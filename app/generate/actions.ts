@@ -140,7 +140,8 @@ export async function CreatePowerpoint(videoId: string) {
       }
 
     } catch (error) {
-        
+        console.error(error);
+        throw new Error("Failed to create powerpoint");
     }    
 };
 

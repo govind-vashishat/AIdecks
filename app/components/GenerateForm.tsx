@@ -31,7 +31,6 @@ export default function GenerateForm() {
 
     const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newUrl = e.target.value.trim();
-        
         if(!newUrl) {
             setError(null);
             setIsValid(false);
@@ -45,6 +44,7 @@ export default function GenerateForm() {
             setIsValid(true);
         } else {
             setError("Invalid YouTube url");
+            console.log(error);
             setIsValid(false);
         }
     }
