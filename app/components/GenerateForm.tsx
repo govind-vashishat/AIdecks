@@ -111,7 +111,7 @@ export default function GenerateForm() {
                     />
                 </div>) : (<div
                 className="mb-8 aspect-video bg-gradient-to-br from-slate-100 to-slate-50 rounded-xl flex flex-col items-center justify-center text-slate-500 shadow-inner"
-                >
+                >  
                     <VideoIcon className="w-16 h-16 mb-4 text-slate-500" />
                     <p>Enter a YouTube video URL to get started.</p>
                 </div>
