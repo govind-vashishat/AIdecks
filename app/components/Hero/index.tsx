@@ -4,8 +4,13 @@ import { buttonVariants } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import Image from 'next/image'
 import { LoginLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/components'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types'
+import Link from 'next/link'
 
-const Hero = () => {
+const Hero = async () => {
+    const { getUser } = getKindeServerSession();
+    const user: KindeUser<object> | null = await getUser();
   return (                                     
     <section 
     className='min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-100'
@@ -19,7 +24,17 @@ const Hero = () => {
                 <p className='mb-9 text-lg text-gray-600'>
                     An online tool that allows you to convert YouTube videos into engaging presentations.
                 </p>
-                <div className='flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4'>
+                {user ? (
+                    <div>
+                        <Link href="/generate"
+                        className={buttonVariants({ 
+                            className: "w-full sm:w-auto"
+                        })}
+                        >Generate
+                        </Link>
+                    </div>
+                ) : (
+                    <div className='flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4'>
                     <RegisterLink   
                     className={buttonVariants({
                         className: "w-full sm:w-auto",
@@ -32,6 +47,7 @@ const Hero = () => {
                     })}
                     >Generate</LoginLink>
                 </div>
+                )}
             </div>
         <div>
             <Card className='overflow-hidden shadow-2xl'>
